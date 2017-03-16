@@ -4,7 +4,7 @@
 var fs = require("fs");
 var filedata = fs.readFileSync(process.argv[2],"UTF-8").toString().split("\r\n");
 var logs = [];
-var regex = /\[([0-9]+)\/([A-Za-z]+)\/([0-9]+):([0-9]+):([0-9]+):([0-9]+) \+0+\] "GET (\/[a-z]+\.html) ?[\?|#]?[A-Za-z\=]+?[ |\=]?[a-z]?[A-Za-z]+\/[0-9]\.[0-9]" ([0-9]+)/;
+var regex = /\[([0-9]+)\/([A-Za-z]+)\/([0-9]+):([0-9]+):([0-9]+):([0-9]+) \+0+\] "GET (\/[a-z-0-9]+\.html)[ |\?|#]?[A-Za-z\=#]+?[ |\=]?[a-z]?[A-Za-z]+\/[0-9]\.[0-9]" ([0-9]+)/;
 
 function dateOfLog(log){
 	var dateLog = new Date(parseInt(log[3]), ("JanFebMarAprMayJunJulAugSepOctNovDec".indexOf(log[2])) / 3, parseInt(log[1]), parseInt(log[4]) + 2, parseInt(log[5]));
